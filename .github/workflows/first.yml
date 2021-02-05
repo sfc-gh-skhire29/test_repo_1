@@ -28,14 +28,16 @@ jobs:
       - uses: trilom/file-changes-action@v1.2.4
       - name: All files changed  
         run: |
-          cat $HOME/files.json
-          cat $HOME/files_modified.json
-          cat $HOME/files_added.json
-          cat $HOME/files_removed.json
-          echo '${{ steps.file_changes.outputs.files}}'
-          echo '${{ steps.file_changes.outputs.files_modified}}'
-          echo '${{ steps.file_changes.outputs.files_added}}'
-          echo '${{ steps.file_changes.outputs.files_removed}}'
+          echo '${{ steps.file_changes.outputs.files }}'
+          echo '${{ steps.file_changes.outputs.files_modified }}'
+    #      cat $HOME/files.json
+     #     cat $HOME/files_modified.json
+     #     cat $HOME/files_added.json
+     #     cat $HOME/files_removed.json
+     #     echo '${{ steps.file_changes.outputs.files}}'
+     #     echo '${{ steps.file_changes.outputs.files_modified}}'
+     #     echo '${{ steps.file_changes.outputs.files_added}}'
+     #     echo '${{ steps.file_changes.outputs.files_removed}}'
       
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
         with:
