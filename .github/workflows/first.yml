@@ -26,6 +26,9 @@ jobs:
       - uses: actions/checkout@v2
       
       - uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ' '
+          fileOutput: ' '
       - name: All files changed  
         run: |
           echo '${{ steps.file_changes.outputs.files }}'
