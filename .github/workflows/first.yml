@@ -48,7 +48,7 @@ jobs:
       
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
         with:
-            python-root-list: "${{ steps.abc.outputs.modified }}"
+            python-root-list: "${{ steps.abc.outputs.added_modified }}"
             use-pylint: true
             use-pycodestyle: false
             use-flake8: false
