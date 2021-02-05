@@ -25,22 +25,25 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - uses: trilom/file-changes-action@v1.2.4
+      - uses: jitterbit/get-changed-files@v1
         with:
-          output: ' '
-          fileOutput: ' '
-      - name: All files changed  
+          format: space-delimited
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Printing
         run: |
-          echo '${{ steps.file_changes.outputs.files }}'
-          echo '${{ steps.file_changes.outputs.files_modified }}'
-    #      cat $HOME/files.json
-     #     cat $HOME/files_modified.json
-     #     cat $HOME/files_added.json
-     #     cat $HOME/files_removed.json
-     #     echo '${{ steps.file_changes.outputs.files}}'
-     #     echo '${{ steps.file_changes.outputs.files_modified}}'
-     #     echo '${{ steps.file_changes.outputs.files_added}}'
-     #     echo '${{ steps.file_changes.outputs.files_removed}}'
+          echo "All:"
+          echo "${{ steps.abc.outputs.all }}"
+          echo "Added:"
+          echo "${{ steps.abc.outputs.added }}"
+          echo "Removed:"
+          echo "${{ steps.abc.outputs.removed }}"
+          echo "Renamed:"
+          echo "${{ steps.abc.outputs.renamed }}"
+          echo "Modified:"
+          echo "${{ steps.abc.outputs.modified }}"
+          echo "Added+Modified:"
+          echo "${{ steps.abc.outputs.added_modified }}"
+       
       
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
         with:
