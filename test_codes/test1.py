@@ -4,6 +4,7 @@ class apple:
         print("q")
 print("e")
 break
+
 a=apple('a')       
 
  
