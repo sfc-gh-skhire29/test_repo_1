@@ -32,6 +32,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Printing
         run: |
+          pwd
           echo "All:"
           echo "${{ steps.abc.outputs.all }}"
           echo "Added:"
