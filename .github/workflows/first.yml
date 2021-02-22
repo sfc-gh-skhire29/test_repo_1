@@ -28,7 +28,8 @@ jobs:
       - uses: jitterbit/get-changed-files@v1
         id: abc
         with:
-          format: space-delimited
+          #format: space-delimited
+          format: 'sql'
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Printing
         run: |
