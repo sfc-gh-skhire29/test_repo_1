@@ -32,6 +32,9 @@ jobs:
       - name: Print python changed files
         run: echo "${{ steps.changed_files.outputs.python_changed_files }}"
         
+      - name: Print head 
+        run: echo "${{ github.head_ref }}"
+        
       - name: Print sql changed files
         run: echo "${{ steps.changed_files.outputs.sql_changed_files }}"  
         
