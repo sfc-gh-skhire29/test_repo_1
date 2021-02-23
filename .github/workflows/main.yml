@@ -41,7 +41,7 @@ jobs:
           target=${{ github.base_ref }}
           head=${{ github.head_ref }}
           
-          git symbolic-ref --name-only $head $target | grep -E "${format_py}"
+          git symbolic-ref $head $target | grep -E "${format_py}"
       
       
       
