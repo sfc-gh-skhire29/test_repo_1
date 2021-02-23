@@ -35,6 +35,9 @@ jobs:
       - name: Print head 
         run: echo "${{ github.head_ref }}"
         
+      - name: Print target
+        run: echo "${{ github.base_ref }}"
+        
       - name: Print sql changed files
         run: echo "${{ steps.changed_files.outputs.sql_changed_files }}"  
         
