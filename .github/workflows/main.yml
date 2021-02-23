@@ -40,7 +40,7 @@ jobs:
           format_py=.py
           target=${{ github.base_ref }}
           head=${{ github.head_ref }}
-          git diff --name-only $head $target 
+          git diff --name-only -- $head -- $target 
       
       
       
