@@ -35,6 +35,14 @@ jobs:
       - name: Print target
         run: echo "${{ github.base_ref }}"
       
+      - name: git diff
+        run: |
+          target=${{ github.base_ref }}
+          head={{ github.head_ref }}
+          git diff --name-only $head $target | grep -E "(${format_py})"
+      
+      
+      
       - name: Print python changed files
         run: echo "${{ steps.changed_files.outputs.python_changed_files }}"
         
