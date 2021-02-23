@@ -46,11 +46,13 @@ jobs:
           echo "Added+Modified:"
           echo "${{ steps.abc.outputs.added_modified }}"
        
-      - run: npm ci
-      - uses: nelonoel/branch-name@v1.0.1
-      # Use branch name for whatever purpose
-      - run: echo ${BRANCH_NAME}branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
+        
+      - name: Print branch name
+        run: echo "${{ steps.extract_branch.outputs.branch }}"
       
       
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
