@@ -39,7 +39,7 @@ jobs:
         run: |
           format=.py
           target=${{ github.base_ref }}
-          head={{ github.head_ref }}
+          head=${{ github.head_ref }}
           git diff --name-only $head $target | grep -E "(${format_py})"
       
       
