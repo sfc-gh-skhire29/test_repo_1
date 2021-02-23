@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-format=.py
+format={.py,.sql}
 head=main
 test_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 echo "head branch: " $head
