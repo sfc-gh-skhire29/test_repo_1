@@ -46,9 +46,10 @@ jobs:
           echo "Added+Modified:"
           echo "${{ steps.abc.outputs.added_modified }}"
        
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      - run: npm ci
+      - uses: nelonoel/branch-name@v1.0.1
+      # Use branch name for whatever purpose
+      - run: echo ${BRANCH_NAME}branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
       
       
