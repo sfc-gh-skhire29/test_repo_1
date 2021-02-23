@@ -37,10 +37,10 @@ jobs:
       
       - name: git diff
         run: |
-          format=.py
+          format_py=.py
           target=${{ github.base_ref }}
           head=${{ github.head_ref }}
-          git diff --name-only $head $target | grep -E "(${format_py})"
+          git diff --name-only $head $target | grep -E "${format_py}"
       
       
       
