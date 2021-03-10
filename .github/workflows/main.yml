@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Pylint action 
+name: CI
 
 # Controls when the action will run. 
 on:
@@ -24,43 +24,38 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      - name: Verify Changed files
+        uses: sfc-gh-skhire29/get-changed-files-action@v.237
+        id: changed_files
       
-      - uses: jitterbit/get-changed-files@v1
-        id: abc
-        with:
-          format: space-delimited
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Printing
-        run: |
-          pwd
-          echo "All:"
-          echo "${{ steps.abc.outputs.all }}"
-          echo "Added:"
-          echo "${{ steps.abc.outputs.added }}"
-          echo "Removed:"
-          echo "${{ steps.abc.outputs.removed }}"
-          echo "Renamed:"
-          echo "${{ steps.abc.outputs.renamed }}"
-          echo "Modified:"
-          echo "${{ steps.abc.outputs.modified }}"
-          echo "Added+Modified:"
-          echo "${{ steps.abc.outputs.added_modified }}"
-       
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_HEAD_REF#refs/heads/})"
-        id: extract_branch
+      - name: Print head 
+        run: echo "${{ github.head_ref }}"
         
-      - name: Print branch name
-        run: echo "${{ steps.extract_branch.outputs.branch }}"
+      - name: Print target
+        run: echo "${{ github.base_ref }}"
       
+      - name: git diff
+        run: |
+          format_py=.py
+          target=${{ github.base_ref }}
+          head=${{ github.head_ref }}
+          git fetch origin main:main
+          git fetch origin $head:$head
+          git diff --name-only $head main
+      
+      
+      - name: Print python changed files
+        run: echo "${{ steps.changed_files.outputs.python_changed_files }}"
+        
+      - name: Print sql changed files
+        run: echo "${{ steps.changed_files.outputs.sql_changed_files }}"  
       
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
         with:
-            python-root-list: "${{ steps.abc.outputs.added_modified }}"
+            python-root-list: "${{ steps.changed_files.outputs.python_changed_files }}"
             use-pylint: true
             use-pycodestyle: false
             use-flake8: false
             use-black: false
             extra-pylint-options: "-sn"
- 
