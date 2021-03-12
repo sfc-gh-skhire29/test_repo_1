@@ -51,9 +51,13 @@ jobs:
       - name: Print sql changed files
         run: echo "${{ steps.changed_files.outputs.sql_changed_files }}"  
        
-        if: ${{ steps.changed_files.outputs.sql_changed_files != '' }}
-      - name: Check sql changed or not
+        if: ${{ steps.changed_files.outputs.sql_changed_files }} == ''
+      - name: Check sql changed
         run: echo "Sql null"
+        
+        if: ${{ steps.changed_files.outputs.sql_changed_files }} != ''
+      - name: Check sql changed not
+        run: echo "Sql not null"
       
         if: ${{ steps.changed_files.outputs.python_changed_files != '' }}
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
