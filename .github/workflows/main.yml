@@ -51,6 +51,7 @@ jobs:
       - name: Print sql changed files
         run: echo "${{ steps.changed_files.outputs.sql_changed_files }}"  
       
+        if: ${{ ${{ steps.changed_files.outputs.python_changed_files }} == '' }}
       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
         with:
             python-root-list: "${{ steps.changed_files.outputs.python_changed_files }}"
