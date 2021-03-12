@@ -51,7 +51,7 @@ jobs:
       - name: Print sql changed files
         run: echo "${{ steps.changed_files.outputs.sql_changed_files }}"  
        
-        if: ${{ steps.changed_files.outputs.sql_changed_files == '' }}
+        if: ${{ steps.changed_files.outputs.sql_changed_files != '' }}
       - name: Check sql changed or not
         run: echo "Sql null"
       
