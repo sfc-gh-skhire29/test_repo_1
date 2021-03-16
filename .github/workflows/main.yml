@@ -41,6 +41,7 @@ jobs:
           head=${{ github.head_ref }}
           git fetch origin main:main
           git fetch origin $head:$head
+          git rebase main
           git diff --name-only $head main
       
       
