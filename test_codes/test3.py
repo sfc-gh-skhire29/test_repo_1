@@ -10,5 +10,6 @@ class sml:
     
     # emec
 
+
 def MYFUNCTION():
     return "x"
