@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Verify Changed files
-        uses: sfc-gh-skhire29/get-changed-files-action@v0.9
+        uses: sfc-gh-skhire29/get-changed-files-action@v0.91
         id: changed_files
       
       - name: Print head 
