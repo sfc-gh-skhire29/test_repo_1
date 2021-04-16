@@ -37,5 +37,5 @@ runs:
   using: "composite"
   steps:
     - id: get-files 
-      run: ${{ github.action_path }}/get2.sh ${{ inputs.token }} ${{ inputs.head_branch }} ${{ inputs.target_branch }}
+      run: ${{ github.action_path }}/get_changed_files.sh ${{ inputs.token }} ${{ inputs.head_branch }} ${{ inputs.target_branch }}
       shell: bash
