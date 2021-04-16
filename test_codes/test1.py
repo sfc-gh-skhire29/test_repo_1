@@ -2,6 +2,9 @@ import sys,random,os
 class apple:
     def __init__(self,q):
         print("q")
+
+        
+        
 print("e")
 
 
@@ -14,6 +17,9 @@ print("e")
 
 #ap
 break
+
+
+
 
 #
 a=apple('a')       
