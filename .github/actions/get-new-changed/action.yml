@@ -1,0 +1,41 @@
+name: 'Get Changed files'
+description: 'Returns files with extension .py, .sql, .txt, .yml that are changed on the next branch' 
+author: sarveshkhire
+
+inputs:
+  token:
+    description: GITHUB_TOKEN or a repo scoped PAT
+    required: true
+    default: ${{ github.token }}
+  head_branch:
+    description: Head branch/ source branch
+    required: true
+    default: ${{ github.head_ref }}
+  target_branch:
+    description: Target branch
+    required: true
+    default: ${{ github.base_ref }}
+  files:
+    description: List of files to check for changes.
+    required: false
+
+outputs:
+  python_changed:
+    description: 'List of changed/added python files'
+    value: ${{ steps.get-files.outputs.python_changed_files }}
+  sql_changed:
+    description: 'List of changed/added sql files' 
+    value: ${{ steps.get-files.outputs.sql_changed_files }} 
+  txt_changed:
+    description: 'List of changed/added text files'
+    value: ${{ steps.get-files.outputs.txt_changed_files }}
+  yml_changed:  
+    description: 'List of changed/added yml files'
+    value: ${{ steps.get-files.outputs.yml_changed_files }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: get-files 
+      run: ${{ github.action_path }}/get_changed_files.sh ${{ inputs.token }} ${{ inputs.head_branch }} ${{ inputs.target_branch }}
+      shell: bash
