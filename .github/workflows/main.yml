@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Verify Changed files
-        uses: ./.github/actions/get-changed-files
+        uses: ./.github/actions/get-new-changed
         id: changed_files
       
       - name: Print head 
