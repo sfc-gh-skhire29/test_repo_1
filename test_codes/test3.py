@@ -1,8 +1,5 @@
 
 
-
-import sys
-
 print("Apple")
 
 class sml:
