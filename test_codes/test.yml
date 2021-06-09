@@ -153,4 +153,3 @@ default:
       database: snowhouse
       schema: finance
       password: {{ app_dev_finance_password }}
-      }
