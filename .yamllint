@@ -6,10 +6,9 @@ yaml-files:
   - '.yamllint'
 
 rules:
-  braces: 
-    level: warning
-  brackets: enable
-  colons: enable
+  braces: disable
+  brackets: disable
+  colons: disable
   commas: disable
   comments: disable
   comments-indentation: disable
