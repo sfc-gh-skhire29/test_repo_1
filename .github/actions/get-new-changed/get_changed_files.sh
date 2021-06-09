@@ -17,10 +17,10 @@ echo $3
 git fetch origin $2:$2
 git fetch origin $3:$3
 
-MODIFIED_FILES_python=$(git diff --name-only $3...$2 | grep -E "(${format_py})")
-MODIFIED_FILES_sql=$(git diff --name-only $3...$2 | grep -E "(${format_sql})")
-MODIFIED_FILES_txt=$(git diff --name-only $3...$2 | grep -E "(${format_txt})")
-MODIFIED_FILES_yml=$(git diff --name-only $3...$2 | grep -E "(${format_yml})")
+MODIFIED_FILES_python=$(git diff --name-only --diff-filter=ACMRT $3...$2 | grep -E "(${format_py})")
+MODIFIED_FILES_sql=$(git diff --name-only --diff-filter=ACMRT $3...$2 | grep -E "(${format_sql})")
+MODIFIED_FILES_txt=$(git diff --name-only --diff-filter=ACMRT $3...$2 | grep -E "(${format_txt})")
+MODIFIED_FILES_yml=$(git diff --name-only --diff-filter=ACMRT $3...$2 | grep -E "(${format_yml})")
 # head=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 # MODIFIED_FILES_python=$(git diff --name-only $head main | grep -E "(${format_py})")
 # MODIFIED_FILES_sql=$(git diff --name-only $head main | grep -E "(${format_sql})")
