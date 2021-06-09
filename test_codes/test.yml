@@ -1,0 +1,156 @@
+vaultkeyName: "app_finance_secrets"
+default:
+  outputs:
+    core:
+      type: snowflake
+      threads: 4
+      account: snowhouse
+      user: app_dbt
+      password: {{ app_dbt_password }}
+      role: app_dbt_rl
+      database: snowhouse
+      warehouse: app_airflow
+      schema: core
+    cogs:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: app_dbt
+      password: {{ app_dbt_password }}
+      role: app_dbt_mini_rl
+      database: snowhouse
+      warehouse: app_airflow
+      schema: cogs
+      client_session_keep_alive: True
+    cloud_inventory:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: app_dbt
+      password: {{ app_dbt_password }}
+      role: app_dbt_mini_rl
+      database: snowhouse
+      warehouse: app_airflow
+      schema: cloud_inventory
+      client_session_keep_alive: True
+    finance_core:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: core_sensitive
+    finance_cloud_inventory_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_cloud_inventory_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_cloud_inventory
+    finance_workday_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_workday_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_workday
+    finance_adaptive_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_adaptive_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_adaptive
+    finance_salesforce_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_salesforce_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_salesforce
+    finance_coupa_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_coupa_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_coupa
+    finance_google_sheets_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_google_sheets_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_google_sheets
+    finance_utils_staging:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_utils_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: stg_utils
+    finance_production:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_modeling_rl
+      database: finance
+      warehouse: app_airflow
+      schema: dev_sensitive
+    k8s_test_fin:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: finance_modeling_user
+      password: {{ app_finance_modeling_password }}
+      role: finance_modeling_rl
+      database: temp
+      warehouse: snowhouse
+      schema: k8s_test_fin
+    k8s_test_dbt:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: app_dbt
+      password: {{ app_dbt_password }}
+      role: app_dbt_mini_rl
+      database: temp
+      warehouse: app_airflow
+      schema: k8s_test_dbt
+    app_dev_finance:
+      type: snowflake
+      threads: 2
+      account: snowhouse
+      user: app_dev_finance
+      warehouse: snowhouse
+      role: app_dev_finance_rl
+      database: snowhouse
+      schema: finance
+      password: {{ app_dev_finance_password }}
+      }
