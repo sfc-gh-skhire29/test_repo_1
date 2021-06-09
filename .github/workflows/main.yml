@@ -51,5 +51,5 @@ jobs:
       - name: yaml Linting
         run: |
           docker exec ${{ env.CONT_ID }} python ./config.py
-          docker exec ${{ env.CONT_ID }} yamllint ${{ steps.changed_files.outputs.yaml_changed }}
+          docker exec ${{ env.CONT_ID }} yamllint ${{ steps.changed_files.outputs.yml_changed }}
         if: ${{ steps.changed_files.outputs.yml_changed != '' }}  
