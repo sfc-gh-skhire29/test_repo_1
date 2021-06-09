@@ -33,17 +33,23 @@ jobs:
         
       - name: Print target
         run: echo "${{ github.base_ref }}"
-      
-      
-      - name: Print python changed files
-        run: echo "${{ steps.changed_files.outputs.python_changed }}"
-        
-      - name: Print sql changed files
-        run: echo "${{ steps.changed_files.outputs.sql_changed }}"  
-      
-      - name: Print text changed files
-        run: echo "${{ steps.changed_files.outputs.txt_changed }}"
         
       - name: Print yml/yaml changed files
         run: echo "${{ steps.changed_files.outputs.yml_changed }}"    
         
+      - name: Installing application dependencies
+        run: |
+          docker build -t lint:latest -f ./lint.Dockerfile .
+          docker run -td lint:latest bash -c "sleep 300"
+          cont_id=$(docker ps -q|head -1)
+          echo "Container Id is $cont_id"
+          echo "CONT_ID=$cont_id" >> $GITHUB_ENV    
+          docker exec ${cont_id} ls -lrt
+        if: ${{ steps.changed_files.outputs.yml_changed != '' }}
+
+        #Step 4: Python linting
+      - name: yaml Linting
+        run: |
+          docker exec ${{ env.CONT_ID }} python ./config.py
+          docker exec ${{ env.CONT_ID }} yamllint ${{ steps.changed_files.outputs.yaml_changed }}
+        if: ${{ steps.changed_files.outputs.yml_changed != '' }}  
