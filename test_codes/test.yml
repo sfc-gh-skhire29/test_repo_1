@@ -2,9 +2,10 @@ vaultkeyName: "app_finance_secrets"
 default:
   outputs:
     core:
+    }
       type: snowflake
       threads: 4
-      account: snowhouse
+      account: snowhouse{}
       user: app_dbt
       password: {{ app_dbt_password }}
       role: app_dbt_rl
