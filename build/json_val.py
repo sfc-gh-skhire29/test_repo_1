@@ -35,11 +35,11 @@ for input_file in input_paths:
     except JSONDecodeError as jsonerror:
         print("---------------------------------------------------------------------------")
         print("JSONDecodeError in ", input_file)
-        print(jsonerror)
+        # print(jsonerror)
         
     except ValidationError as valerrr:
         print("---------------------------------------------------------------------------")
         print("Schema ValidationError in ", input_file)
-        print(valerrr)
+        # print(valerrr)
         raise
     f.close()
