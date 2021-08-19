@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "database": {
+      "type": "string"
+    },
+    "schema_name": {
+      "type": "string"
+    },
+    "table": {
+      "type": "string"
+    },
+    "app": {
+      "type": "string"
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "column_name": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "EXPECT_COLUMN_VALUES_TO_NOT_BE_NULL": {
+            "type": "string",
+            "enum": [
+              "TRUE"
+            ]
+          },
+          "EXPECT_COLUMN_VALUES_TO_BE_UNIQUE": {
+            "type": "string",
+            "enum": [
+              "TRUE"
+            ]
+          },
+          "EXPECT_COLUMN_VALUES_TO_MATCH_REGEX": {
+            "type": "string",
+            "enum": [
+              "TRUE"
+            ]
+          },
+          "REGEX_VALUE_CHECK": {
+            "type": "string",
+            "enum": [
+              "/^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i"
+            ]
+          }
+        },
+        "required": [
+          "column_name",
+          "query",
+          "EXPECT_COLUMN_VALUES_TO_NOT_BE_NULL",
+          "EXPECT_COLUMN_VALUES_TO_BE_UNIQUE",
+          "EXPECT_COLUMN_VALUES_TO_MATCH_REGEX",
+          "REGEX_VALUE_CHECK"
+        ]
+      }
+    },
+    "slack_channel_id": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "incident_blame": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "app_name": {
+            "type": "string"
+          },
+          "data_owner": {
+            "type": "string"
+          },
+          "assignment_group": {
+            "type": "string"
+          },
+          "assignee": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_name"
+        ]
+      }
+    }
+  },
+  "required": [
+    "database",
+    "schema_name",
+    "table",
+    "app",
+    "columns",
+    "slack_channel_id",
+    "email",
+    "incident_blame"
+  ]
+}

@@ -32,6 +32,9 @@ outputs:
   yml_changed:  
     description: 'List of changed/added yml files'
     value: ${{ steps.get-files.outputs.yml_changed_files }}
+  json_changed:  
+    description: 'List of changed/added json files'
+    value: ${{ steps.get-files.outputs.json_changed_files }}
 
 runs:
   using: "composite"

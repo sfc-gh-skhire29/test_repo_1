@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "database": {
+      "type": "string"
+    },
+    "schema_name": {
+      "type": "string"
+    },
+    "table": {
+      "type": "string"
+    },
+    "app": {
+      "type": "string"
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "column_name": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "column_name",
+          "query"
+        ]
+      }
+    },
+    "slack_channel_id": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "incident_blame": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "app_name": {
+            "type": "string"
+          },
+          "data_owner": {
+            "type": "string"
+          },
+          "assignment_group": {
+            "type": "string"
+          },
+          "assignee": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_name"
+        ]
+      }
+    }
+  },
+  "required": [
+    "database",
+    "schema_name",
+    "table",
+    "app",
+    "columns",
+    "slack_channel_id",
+    "email",
+    "incident_blame"
+  ]
+}

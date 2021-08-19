@@ -1,0 +1,56 @@
+# This is a basic workflow to help you get started with Actions
+
+name: JSON VALIDATION
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+
+  pull_request:
+    branches: [ main ]
+    paths: 
+       - 'json_files/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  validate_json_files:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Verify Changed files
+        uses: ./.github/actions/get-new-changed
+        id: changed_files
+      
+      - name: Print head 
+        run: echo "${{ github.head_ref }}"
+        
+      - name: Print target
+        run: echo "${{ github.base_ref }}"
+        
+      - name: Print json/json changed files
+        run: echo "${{ steps.changed_files.outputs.json_changed }}"    
+        
+      - name: Installing application dependencies
+        run: |
+          docker build -t json_val:latest -f ./build/Dockerfile .
+          docker run -td json_val:latest bash -c "sleep 3000"
+          cont_id=$(docker ps -q|head -1)
+          echo "Container Id is $cont_id"
+          echo "CONT_ID=$cont_id" >> $GITHUB_ENV    
+          docker exec ${cont_id} ls -lrt
+        
+
+        #Step 4: Python linting
+      - name: JSON VALIDATION
+        run: |
+          docker exec ${{ env.CONT_ID }} python3 build/json_val.py
+         
