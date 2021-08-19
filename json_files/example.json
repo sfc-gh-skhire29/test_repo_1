@@ -20,7 +20,7 @@
                   }
       ],
 
-      "slack_channel" : "ssd",
+      "slack_channel_id" : "ssd",
       "email" : "sivaraman.venu@snowflake.com, sairam.murali@snowflake.com",
       "incident_blame": 
                [
