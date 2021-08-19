@@ -23,10 +23,10 @@
       ],
 
       "slack_channel_id" : "c",
-      "emal" : "sivaraman.venu@snowflake.com, sairam.murali@snowflake.com",
+      "email" : "sivaraman.venu@snowflake.com, sairam.murali@snowflake.com",
 
      
-      "incident_bla": 
+      "incident_blame": 
                [
                   
                            {  "app_name": "servicenow",
