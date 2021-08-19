@@ -52,7 +52,11 @@
         },
         "required": [
           "column_name",
-          "query"
+          "query",
+          "EXPECT_COLUMN_VALUES_TO_NOT_BE_NULL",
+          "EXPECT_COLUMN_VALUES_TO_BE_UNIQUE",
+          "EXPECT_COLUMN_VALUES_TO_MATCH_REGEX",
+          "REGEX_VALUE_CHECK"
         ]
       }
     },
