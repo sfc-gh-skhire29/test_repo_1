@@ -4,7 +4,7 @@ from jsonschema import validate
 
 dirpath = os.path.dirname(os.path.abspath(__file__))
 repo_path  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-s = open(os.path.join(dirpath,'complete_schema.json'),'r')
+s = open(os.path.join(dirpath,'complete_schema_crowdstrike.json'),'r')
 schema = json.load(s)
 
 f = open(os.path.join(repo_path, 'json_files/example.json'),'r')

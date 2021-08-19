@@ -49,7 +49,7 @@ jobs:
           docker exec ${cont_id} ls -lrt
         
 
-        #Step 4: Python linting
+        #Step 4: JSON VALIDATION
       - name: JSON VALIDATION
         run: |
           docker exec ${{ env.CONT_ID }} python3 build/json_val.py
