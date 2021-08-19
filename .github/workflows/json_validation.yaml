@@ -52,5 +52,5 @@ jobs:
         #Step 4: JSON VALIDATION
       - name: JSON VALIDATION
         run: |
-          docker exec ${{ env.CONT_ID }} python3 build/json_val.py
+          docker exec ${{ env.CONT_ID }} python3 build/json_val.py ${{ steps.changed_files.outputs.json_changed }}
          
