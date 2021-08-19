@@ -38,10 +38,9 @@ for input_file in input_paths:
             
     try:
         validate(instance = example, schema = schema)
-    
-
     except ValidationError as valerrr:
         print("---------------------------------------------------------------------------")
         print("Schema ValidationError in ", input_file)
         print(valerrr)
+        raise
     f.close()
