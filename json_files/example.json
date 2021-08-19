@@ -2,7 +2,7 @@
       "database" : "snowalert",
       "schema_name" : "basedata",
       "table":"crowdstrike_agent_online",
-      "app":"CROWDSTRIKE",
+      "app":"CROWD_STRIKE",
       "columns":[
                   {  "column_name": "aid", 
                      "query":"select aid from snowalert.basedata.crowdstrike_agent_online where condition",
@@ -20,7 +20,7 @@
                   }
       ],
 
-      "slack_channel_id" : "C02435N6C9K",
+      "slack_channel_id" : "ssd",
       "email" : "sivaraman.venu@snowflake.com, sairam.murali@snowflake.com",
       "incident_blame": 
                [
