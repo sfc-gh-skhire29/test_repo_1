@@ -35,8 +35,6 @@ for input_file in input_paths:
         print("---------------------------------------------------------------------------")
         print("JSONDecodeError in ", input_file)
         print(jsonerror)
-            
-    try:
         validate(instance = example, schema = schema)
     except ValidationError as valerrr:
         print("---------------------------------------------------------------------------")
