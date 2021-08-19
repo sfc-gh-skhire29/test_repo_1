@@ -4,7 +4,7 @@
       "table":"crowdstrike_agent_online",
       "app":"CROWD_STRIKE",
       "columns":[
-                  {  "column_name": 1, 
+                  {  "column_name": "d", 
                      "query":"select aid from snowalert.basedata.crowdstrike_agent_online where condition",
                      "EXPECT_COLUMN_VALUES_TO_NOT_BE_NULL":"TRUE",
                      "EXPECT_COLUMN_VALUES_TO_BE_UNIQUE":"TRUE",
