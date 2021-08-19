@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Verify Changed files
-        uses: ./.github/actions/get-changed-files
+        uses: ./.github/actions/get-new-changed
         id: changed_files
       
       - name: Print head 
@@ -33,44 +33,22 @@ jobs:
         
       - name: Print target
         run: echo "${{ github.base_ref }}"
-      
-#       - name: git diff
-#         run: |
-#           format_py=.py
-#           target=${{ github.base_ref }}
-#           head=${{ github.head_ref }}
-#           git fetch origin main:main
-#           git fetch origin $head:$head
-#           git diff --name-only $head main
-      
-      
-      - name: Print python changed files
-        run: echo "${{ steps.changed_files.outputs.python_changed }}"
-        
-      - name: Print sql changed files
-        run: echo "${{ steps.changed_files.outputs.sql_changed }}"  
-      
-      - name: Print text changed files
-        run: echo "${{ steps.changed_files.outputs.txt_changed }}"
         
       - name: Print yml/yaml changed files
         run: echo "${{ steps.changed_files.outputs.yml_changed }}"    
         
-#       - name: Check sql changed
-#         run: echo "Sql changed"
-#         if: ${{ steps.changed_files.outputs.sql_changed_files != '' }}
-        
-        
-#       - name: Check sql not changed
-#         run: echo "Sql not changed"
-#         if: ${{ steps.changed_files.outputs.sql_changed_files == '' }}
-      
+      - name: Installing application dependencies
+        run: |
+          docker build -t lint:latest -f ./lint.Dockerfile .
+          docker run -td lint:latest bash -c "sleep 300"
+          cont_id=$(docker ps -q|head -1)
+          echo "Container Id is $cont_id"
+          echo "CONT_ID=$cont_id" >> $GITHUB_ENV    
+          docker exec ${cont_id} ls -lrt
+        if: ${{ steps.changed_files.outputs.yml_changed != '' }}
 
-#       - uses: sfc-gh-skhire29/python-lint-action-1@v1.2
-#         with:
-#             python-root-list: "${{ steps.changed_files.outputs.python_changed_files }}"
-#             use-pylint: true
-#             use-pycodestyle: false
-#             use-flake8: false
-#             use-black: false
-#             extra-pylint-options: "-sn"
+        #Step 4: Python linting
+      - name: yaml Linting
+        run: |
+          docker exec ${{ env.CONT_ID }} yamllint ${{ steps.changed_files.outputs.yml_changed }}
+        if: ${{ steps.changed_files.outputs.yml_changed != '' }}  

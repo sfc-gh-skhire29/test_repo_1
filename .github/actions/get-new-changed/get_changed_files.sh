@@ -5,8 +5,8 @@
 # $3 - target_branch
 # $4 - files
 
-format_py=.py
-format_sql=.sql
+format_py='\.py$'
+format_sql='\.sql$'
 format_txt=.txt
 format_yml='.y*ml'
 
