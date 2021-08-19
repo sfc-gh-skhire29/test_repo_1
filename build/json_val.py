@@ -31,11 +31,12 @@ for input_file in input_paths:
     try: 
         f = open(os.path.join(repo_path, input_file),'r')
         example = json.load(f)
+        validate(instance = example, schema = schema)
     except JSONDecodeError as jsonerror:
         print("---------------------------------------------------------------------------")
         print("JSONDecodeError in ", input_file)
         print(jsonerror)
-        validate(instance = example, schema = schema)
+        
     except ValidationError as valerrr:
         print("---------------------------------------------------------------------------")
         print("Schema ValidationError in ", input_file)
