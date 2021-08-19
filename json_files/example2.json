@@ -4,14 +4,14 @@
       "table":"crowdstrike_agent_online",
       "app":"CROWD_STRIKE",
       "columns":[
-                  {  "column_name": 1, 
+                  {  "column_name": "id", 
                      "query":"select aid from snowalert.basedata.crowdstrike_agent_online where condition",
                      "EXPECT_COLUMN_VALUES_TO_NOT_BE_NULL":"TRUE",
                      "EXPECT_COLUMN_VALUES_TO_BE_UNIQUE":"TRUE",
                      "EXPECT_COLUMN_VALUES_TO_MATCH_REGEX":"TRUE",
                      "REGEX_VALUE_CHECK":"/^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i" 
                   },
-                  {  "column_name": "id",
+                  {  "column_name": 3,
                      "query":"select column name from snowalert.basedata.crowdstrike_agent_online where condition",
                      "EXPECT_COLUMN_VALUES_TO_NOT_BE_NULL":"TRUE",
                      "EXPECT_COLUMN_VALUES_TO_BE_UNIQUE":"TRUE",
@@ -22,7 +22,7 @@
 
       "slack_channel_id" : "ssd",
       "email" : "sivaraman.venu@snowflake.com, sairam.murali@snowflake.com",
-      "incident_blame": 
+      "incident_bla": 
                [
                   
                            {  "app_name": "servicenow",
@@ -34,4 +34,4 @@
                            }
                ]
 
-   }
+   
