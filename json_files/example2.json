@@ -1,5 +1,7 @@
    {
+
       "database" : 1,
+
       "schema_name" : "basedata",
       "table":"crowdstrike_agent_online",
       "app":"CROWD_STRIKE",
@@ -22,6 +24,8 @@
 
       "slack_channel_id" : [11,2],
       "emal" : "sivaraman.venu@snowflake.com, sairam.murali@snowflake.com",
+
+     
       "incident_bla": 
                [
                   
