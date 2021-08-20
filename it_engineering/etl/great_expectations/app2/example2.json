@@ -2,7 +2,7 @@
       
       "database" : "snowaler",
       "schema_name" : "basedata",
-      "table":"crowdstrike_agent_online",
+      "tale":"crowdstrike_agent_online",
       "app":"CROWD_STRIKE",
       "columns":[
                   {  "column_name": "id", 
