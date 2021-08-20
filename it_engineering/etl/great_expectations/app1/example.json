@@ -1,6 +1,6 @@
    {
-      "database" : "snowalert",
-      "schema_name" : "basedata",
+      "database" : "snolert",
+      "schema_nam" : "basedata",
       "table":"crowdstrike_agent_online",
       "app":"CROWD_STRIKE",
       "columns":[
