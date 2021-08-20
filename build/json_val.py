@@ -16,6 +16,21 @@ args = my_parser.parse_args()
 input_paths = args.Path
 print("Files Passed are ",input_paths)
 
+filter_input_paths = []
+for input_path in input_paths:
+    if (input_path.startswith('it_engineering/etl/great_expectations')):
+        # dirname = os.path.dirname(input_path)
+        # dirbasename = os.path.basename(dirname)
+        # filename = os.path.basename(input_path)
+        # print(dirname)
+        # print(dirbasename)
+        # print(filename)
+        # filter_input_paths.append(os.path.join(dirbasename,filename))
+        filter_input_paths.append(input_path)
+
+print("Files to work on are ",filter_input_paths)
+
+
 dirpath = os.path.dirname(os.path.abspath(__file__))
 repo_path  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 schema_file_path = os.path.join(dirpath,'complete_schema_crowdstrike.json')
@@ -27,7 +42,7 @@ except JSONDecodeError as jsonerror:
     print("JSONDecodeError in SCHEMA FILE ", schema_file_path)
     print(jsonerror)
 
-for input_file in input_paths:
+for input_file in filter_input_paths:
     try: 
         f = open(os.path.join(repo_path, input_file),'r')
         example = json.load(f)
