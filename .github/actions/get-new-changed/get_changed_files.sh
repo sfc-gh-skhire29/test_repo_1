@@ -9,7 +9,7 @@ format_py='\.py$'
 format_sql='\.sql$'
 format_txt=.txt
 format_yml='.y*ml'
-format_json='it_engineering/great_expectations/*.json$'
+format_json='^it_engineering/great_expectations/*.json$'
 
 echo $2
 echo $3
