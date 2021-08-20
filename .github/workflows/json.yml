@@ -32,7 +32,7 @@ jobs:
       - name: Print target
         run: echo "${{ github.base_ref }}"
         
-      - name: Print json/json changed files
+      - name: Print json changed files
         run: echo "${{ steps.changed_files.outputs.json_changed }}"    
         
       - name: Installing application dependencies

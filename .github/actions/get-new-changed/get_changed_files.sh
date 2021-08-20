@@ -7,7 +7,7 @@
 
 format_py='\.py$'
 format_sql='\.sql$'
-format_txt=.txt
+format_txt='.txt$'
 format_yml='.y*ml'
 format_json='\.json$'
 
@@ -27,7 +27,7 @@ MODIFIED_FILES_json=$(git diff --name-only $3...$2 | grep -E "(${format_json})")
 # MODIFIED_FILES_python=$(git diff --name-only $head main | grep -E "(${format_py})")
 # MODIFIED_FILES_sql=$(git diff --name-only $head main | grep -E "(${format_sql})")
 
-echo "Modified python files1: "$MODIFIED_FILES_python
+echo "Modified python files: "$MODIFIED_FILES_python
 echo "Modified sql files: "$MODIFIED_FILES_sql
 echo "Modified text files: "$MODIFIED_FILES_txt
 echo "Modified yml files: "$MODIFIED_FILES_yml
