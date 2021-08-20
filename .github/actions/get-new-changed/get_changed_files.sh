@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # $1 - token
-# $2 - head_branch
-# $3 - target_branch
+# $2 - head_branch 
+# $3 - target_branch (main)
 # $4 - files
 
 format_py='\.py$'
