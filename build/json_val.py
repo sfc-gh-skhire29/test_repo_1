@@ -51,6 +51,7 @@ for input_file in filter_input_paths:
         print("---------------------------------------------------------------------------")
         print("JSONDecodeError in ", input_file)
         # print(jsonerror)
+        raise
         
     except ValidationError as valerrr:
         print("---------------------------------------------------------------------------")
