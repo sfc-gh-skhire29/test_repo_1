@@ -22,6 +22,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Verify Changed files
+        uses: ./.github/actions/get-new-changed
+        id: changed_files
+      
+      - name: Print head 
+        run: echo "${{ github.head_ref }}"
+        
+      - name: Print target
+        run: echo "${{ github.base_ref }}"
+        
+      - name: Print json changed files
+        run: echo "${{ steps.changed_files.outputs.json_changed }}"  
+      
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
