@@ -6,15 +6,10 @@ from json.decoder import JSONDecodeError
 from jsonschema import validate
 
 my_parser = argparse.ArgumentParser(description='List the json files of a folder')
-my_parser.add_argument('Path',
-                       metavar='path',
-                       type=str,
-                       nargs = '+',
-                       help='the path',
-                       required=False)
+my_parser.add_argument('--path', type=str, nargs = '+', help='the path')
 
 args = my_parser.parse_args()
-input_paths = args.Path
+input_paths = args.path
 print("Files Passed are ",input_paths)
 
 filter_input_paths = []

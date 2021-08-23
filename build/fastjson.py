@@ -4,14 +4,10 @@ import os
 import fastjsonschema
 
 my_parser = argparse.ArgumentParser(description='List the json files of a folder')
-my_parser.add_argument('Path',
-                       metavar='path',
-                       type=str,
-                       nargs = '+',
-                       help='the path')
+my_parser.add_argument('--path', type=str, nargs = '+', help='the path')
 
 args = my_parser.parse_args()
-input_paths = args.Path
+input_paths = args.path
 print("Files Passed are ",input_paths)
 
 filter_input_paths = []
@@ -40,5 +36,4 @@ for input_file in filter_input_paths:
     f = open(os.path.join(repo_path, input_file),'r')
     example = json.load(f)
     fastjsonschema.validate(schema, example)
-    # print(valerrr)
     f.close()
