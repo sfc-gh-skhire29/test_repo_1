@@ -14,7 +14,7 @@ print("Files Passed are ",input_paths)
 
 filter_input_paths = []
 for input_path in input_paths:
-    if (input_path.startswith('it_engineering/etl/great_expectations')):
+    if (input_path.startswith('it_engineering/etl/great_expectations/staging/cloud_engg/inputs')):
         # dirname = os.path.dirname(input_path)
         # dirbasename = os.path.basename(dirname)
         # filename = os.path.basename(input_path)
@@ -27,9 +27,9 @@ for input_path in input_paths:
 print("Files to work on are ",filter_input_paths)
 
 
-dirpath = os.path.dirname(os.path.abspath(__file__))
-repo_path  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-schema_file_path = os.path.join(dirpath,'complete_schema_crowdstrike.json')
+repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+schema_file_path = "it_engineering/etl/great_expectations/staging/cloud_engg/schema/schema.json"
 try:
     s = open(schema_file_path,'r')
     schema = json.load(s)

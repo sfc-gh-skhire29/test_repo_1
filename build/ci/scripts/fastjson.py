@@ -27,12 +27,18 @@ print("Files to work on are ",filter_input_paths)
 
 dirpath = os.path.dirname(os.path.abspath(__file__))
 repo_path  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-schema_file_path = os.path.join(dirpath,'complete_schema_crowdstrike.json')
+schema_file_path = os.path.join(dirpath,'')
+
+print(dirpath)
+print(repo_path)
+print(schema_file_path)
+
 
 s = open(schema_file_path,'r')
 schema = json.load(s)
 
 for input_file in filter_input_paths:
+    print(os.path.join(repo_path, input_file))
     f = open(os.path.join(repo_path, input_file),'r')
     example = json.load(f)
     fastjsonschema.validate(schema, example)
