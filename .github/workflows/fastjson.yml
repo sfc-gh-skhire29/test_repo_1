@@ -49,4 +49,4 @@ jobs:
         #Step 4: JSON VALIDATION
       - name: JSON VALIDATION
         run: |
-          docker exec ${{ env.CONT_ID }} python3 build/fastjson.py ${{ steps.changed_files.outputs.json_changed }}
+          docker exec ${{ env.CONT_ID }} python3 build/fastjson.py --path ${{ steps.changed_files.outputs.json_changed }}
