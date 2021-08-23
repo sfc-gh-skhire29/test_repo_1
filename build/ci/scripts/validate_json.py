@@ -66,9 +66,11 @@ def validate_json_files(filter_input_paths, schema_file_path, repo_path, method 
 
 if __name__== "__main__":
     input_paths = args.path
+    print(input_paths)
     schema_file_path = args.schema_path[0]
     method = args.method[0]
     filter_on = args.filter[0]
+    print("filter = ",filter_on)
     repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     # schema_file_path = "it_engineering/etl/great_expectations/staging/app/cloud_engg/schema/schema.json"
     # filter_on = f'it_engineering/etl/great_expectations/staging/app/cloud_engg/input_jsons'
