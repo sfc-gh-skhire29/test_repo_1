@@ -10,7 +10,8 @@ my_parser.add_argument('Path',
                        metavar='path',
                        type=str,
                        nargs = '+',
-                       help='the path')
+                       help='the path',
+                       required=False)
 
 args = my_parser.parse_args()
 input_paths = args.Path
