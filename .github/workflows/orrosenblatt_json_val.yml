@@ -33,10 +33,10 @@ jobs:
         run: echo "${{ github.base_ref }}"
         
       - name: Print json changed files
-        run: echo "${{ steps.changed_files.outputs.json_changed }}"  
+        run: echo "${{ steps.changed_files.outputs.json_changed_c }}"  
       
       - name: Validate JSON
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
           INPUT_SCHEMA: /build/schema.json
-          INPUT_JSONS: ${{ steps.changed_files.outputs.json_changed }}
+          INPUT_JSONS: ${{ steps.changed_files.outputs.json_changed_c }}
