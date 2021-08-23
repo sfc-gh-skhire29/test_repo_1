@@ -33,15 +33,16 @@ echo "Modified text files: "$MODIFIED_FILES_txt
 echo "Modified yml files: "$MODIFIED_FILES_yml
 echo "Modified json files: "$MODIFIED_FILES_json
 
-json_string=$MODIFIED_FILES_json
-IFS=' ' read -ra my_array <<< "$json_string"
-
-IFS=',';
-echo "${my_array[*]// ,}"
-
 echo "::set-output name=python_changed_files::$(echo $MODIFIED_FILES_python)"
 echo "::set-output name=sql_changed_files::$(echo $MODIFIED_FILES_sql)"
 echo "::set-output name=txt_changed_files::$(echo $MODIFIED_FILES_txt)"
 echo "::set-output name=yml_changed_files::$(echo $MODIFIED_FILES_yml)"
 echo "::set-output name=json_changed_files::$(echo $MODIFIED_FILES_json)"
+
+
+echo "-------123-------"
+x="$(echo "$MODIFIED_FILES_json")"
+IFS=' ' read -ra my_array <<< "$(echo $x)"
+IFS=','
+echo "${my_array[*]// ,}"
 echo "::set-output name=json_changed_files_c::$(echo "${my_array[*]// ,}")"
