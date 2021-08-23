@@ -37,7 +37,7 @@ jobs:
         
       - name: Installing application dependencies
         run: |
-          docker build -t json_val:latest -f ./it_engineering/etl/great_expectations/staging/cloud_engg/build/Dockerfile .
+          docker build -t json_val:latest -f ./it_engineering/etl/great_expectations/staging/app/cloud_engg/build/Dockerfile .
           docker run -td json_val:latest bash -c "sleep 3000"
           cont_id=$(docker ps -q|head -1)
           echo "Container Id is $cont_id"
