@@ -48,5 +48,5 @@ jobs:
         #Step 4: JSON VALIDATION
       - name: JSON VALIDATION
         run: |
-          docker exec ${{ env.CONT_ID }} python3 build/ci/scripts/validate_json.py --path ${{ steps.changed_files.outputs.json_changed }} --schema it_engineering/etl/great_expectations/staging/cloud_engg/schema/schema.json --method jsonschema --filter --filter it_engineering/etl/great_expectations/staging/app/cloud_engg/input_json
+          docker exec ${{ env.CONT_ID }} python3 build/ci/scripts/validate_json.py --path ${{ steps.changed_files.outputs.json_changed }} --schema it_engineering/etl/great_expectations/staging/cloud_engg/schema/schema.json --method jsonschema --filter it_engineering/etl/great_expectations/staging/app/cloud_engg/input_json
          
