@@ -27,6 +27,7 @@ def filter_paths(input_paths, filter_on):
 
 
 def validate_json_files(filter_input_paths, schema_file_path, repo_path, method = 'jsonschema'):
+    error = 0
     try:
         s = open(schema_file_path,'r')
         schema = json.load(s)
@@ -44,13 +45,17 @@ def validate_json_files(filter_input_paths, schema_file_path, repo_path, method 
             except JSONDecodeError as jsonerror:
                 print("---------------------------------------------------------------------------")
                 print("JSONDecodeError in ", input_file)
-                raise
+                print(jsonerror)
+                error = 1
                 
-            except ValidationError as valerrr:
+            except ValidationError as valerror:
                 print("---------------------------------------------------------------------------")
                 print("Schema ValidationError in ", input_file)
-                raise
+                print(valerror)
+                error = 1
             f.close()
+        if error == 1:
+            raise
 
     elif method == 'fastjsonschema':
         for input_file in filter_input_paths:
