@@ -20,9 +20,8 @@ def filter_paths(input_paths, filter_on):
     for input_path in input_paths:
         if (input_path.startswith(filter_on)):
             filter_input_paths.append(input_path)
-    print("-------------------------------------------------")
+    print("--------------------------------------------------------------------------------------------------")
     print("Files to work on are ",filter_input_paths)
-    print("-------------------------------------------------")
     
     return filter_input_paths
 
@@ -33,7 +32,7 @@ def validate_json_files(filter_input_paths, schema_file_path, repo_path, method 
         s = open(schema_file_path,'r')
         schema = json.load(s)
     except JSONDecodeError as jsonerror:
-        print("---------------------------------------------------------------------------")
+        print("--------------------------------------------------------------------------------------------------")
         print("JSONDecodeError in SCHEMA FILE ", schema_file_path)
         print(jsonerror)
         raise
@@ -45,13 +44,13 @@ def validate_json_files(filter_input_paths, schema_file_path, repo_path, method 
                 example = json.load(f)
                 validate(instance = example, schema = schema)
             except JSONDecodeError as jsonerror:
-                print("---------------------------------------------------------------------------")
+                print("--------------------------------------------------------------------------------------------------")
                 print("JSONDecodeError in ", input_file)
                 print(jsonerror)
                 error = 1
                 
             except ValidationError as valerror:
-                print("---------------------------------------------------------------------------")
+                print("--------------------------------------------------------------------------------------------------")
                 print("Schema ValidationError in ", input_file)
                 print(valerror)
                 error = 1
