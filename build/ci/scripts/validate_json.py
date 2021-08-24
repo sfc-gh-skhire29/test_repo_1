@@ -20,9 +20,10 @@ def filter_paths(input_paths, filter_on):
     for input_path in input_paths:
         if (input_path.startswith(filter_on)):
             filter_input_paths.append(input_path)
-
+    print("-------------------------------------------------")
     print("Files to work on are ",filter_input_paths)
-
+    print("-------------------------------------------------")
+    
     return filter_input_paths
 
 
@@ -77,7 +78,7 @@ if __name__== "__main__":
     schema_file_path = args.schema_path[0]
     method = args.method[0]
     filter_on = args.filter[0]
-    print("filter = ",filter_on)
+    # print("filter = ",filter_on)
     repo_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     # schema_file_path = "it_engineering/etl/great_expectations/staging/app/cloud_engg/schema/schema.json"
     # filter_on = f'it_engineering/etl/great_expectations/staging/app/cloud_engg/input_jsons'
