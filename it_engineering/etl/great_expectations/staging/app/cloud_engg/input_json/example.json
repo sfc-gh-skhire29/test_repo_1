@@ -1,5 +1,5 @@
    {
-      "database" : "snowalert",
+      "dtabase" : "snowalert",
       "schema_name" : "basedata",
       "table":"crowdstrike_agent_online",
       "app":"CROWD_STRIKE",
