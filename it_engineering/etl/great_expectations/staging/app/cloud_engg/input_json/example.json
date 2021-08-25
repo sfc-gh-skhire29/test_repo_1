@@ -12,7 +12,7 @@
                      "REGEX_VALUE_CHECK":"/^[0-9A-F]{8}-[0-9A-F]{4}-[1][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i" 
                   },
                   {  "column_name": "id",
-                     "query":"select column name from snowalert.basedata.crowdstrike_agent_online where condition",
+                     "query":"selec column name from snowalert.basedata.crowdstrike_agent_online where condition",
                      "EXPECT_OLUMN_VALUES_TO_NOT_BE_NULL":"TRUE",
                      "EXPECT_COLUMN_VAUES_TO_BE_UNIQUE":"TRUE",
                      "EXPECT_COLUMN_VALUES_TO_MATCH_REGEX":"TRUE",
